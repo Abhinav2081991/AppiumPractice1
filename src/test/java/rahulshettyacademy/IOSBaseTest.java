@@ -28,12 +28,11 @@ public class IOSBaseTest {
 	@BeforeClass
 	public void ConfigureAppium() throws MalformedURLException
 	{
-		
 		 service = new AppiumServiceBuilder().withAppiumJS(new File("//usr//local//lib//node_modules//appium//build//lib//main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).build();
 			service.start();
 			
-				XCUITestOptions	 options = new XCUITestOptions();	
+				XCUITestOptions	 options = new XCUITestOptions();
 				options.setDeviceName("iPhone 13 Pro");
 				options.setApp("/Users/rahulshetty/Desktop/UIKitCatalog.app");
 			//	options.setApp("//Users//rahulshetty//workingcode//Appium//src//test//java//resources//TestApp 3.app");
@@ -44,13 +43,10 @@ public class IOSBaseTest {
 			 driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
-	
-	
-	
 
 	@AfterClass
-	public void tearDown()
-	{
+	public void tearDown() {
+
 		driver.quit();
         service.stop();
 		}

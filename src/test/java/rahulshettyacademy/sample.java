@@ -31,11 +31,11 @@ public class sample {
 //		 service = new AppiumServiceBuilder().withAppiumJS(new File("//usr//local//lib//node_modules//appium//build//lib//main.js"))
 //				.withIPAddress("127.0.0.1").usingPort(4723).build();
 //			service.start();
-DesiredCapabilities caps = new DesiredCapabilities();
-    	
-    	// Set your access credentials
-caps.setCapability("browserstack.user", "rahulshetty_bm6tXG");
-caps.setCapability("browserstack.key", "avTb7CjxY6Ga6KcsCwJe");
+        DesiredCapabilities caps = new DesiredCapabilities();
+
+                // Set your access credentials
+        caps.setCapability("browserstack.user", "rahulshetty_bm6tXG");
+        caps.setCapability("browserstack.key", "avTb7CjxY6Ga6KcsCwJe");
     	
     	// Set URL of the application under test
     	caps.setCapability("app", "bs://971299524f839aa95e852372b6fd465aae139101");
@@ -94,22 +94,20 @@ caps.setCapability("browserstack.key", "avTb7CjxY6Ga6KcsCwJe");
 			    "direction", direction,
 			    "percent", 0.75
 			));
-		
-		
 	}
 	
 	
-	public Double getFormattedAmount(String amount)
-	{
+	public Double getFormattedAmount(String amount) {
+
 		Double price = Double.parseDouble(amount.substring(1));
 		return price;
-		
 	}
+
 	@AfterClass
-	public void tearDown()
-	{
+	public void tearDown() {
+
 		driver.quit();
         service.stop();
-		}
+    }
 	
 }

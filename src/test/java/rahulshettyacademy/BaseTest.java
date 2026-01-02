@@ -30,15 +30,11 @@ public class BaseTest {
 		 service = new AppiumServiceBuilder().withAppiumJS(new File("//usr//local//lib//node_modules//appium//build//lib//main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).build();
 			service.start();
-			
-								
+
 			UiAutomator2Options options = new UiAutomator2Options();
 			//options.setDeviceName("RahulPhone"); //emulator
 			options.setDeviceName("Android Device");// real device
-			
-			
 			options.setChromedriverExecutable("//Users//rahulshetty//documents//chromedriver 11");
-			
 			options.setApp("//Users//rahulshetty//workingcode//Appium//src//test//java//resources//ApiDemos-debug.apk");	
 		//	options.setApp("//Users//rahulshetty//workingcode//Appium//src//test//java//resources//General-Store.apk");
 			
@@ -49,7 +45,7 @@ public class BaseTest {
 	public void longPressAction(WebElement ele)
 	{
 		((JavascriptExecutor)driver).executeScript("mobile: longClickGesture",
-				ImmutableMap.of("elementId",((RemoteWebElement)ele).getId(),
+		ImmutableMap.of("elementId",((RemoteWebElement)ele).getId(),
 						"duration",2000));
 	}
 	
@@ -72,13 +68,21 @@ public class BaseTest {
 	{
 		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
 				"elementId", ((RemoteWebElement)ele).getId(),
-			 
 			    "direction", direction,
 			    "percent", 0.75
 			));
 		
 		
 	}
+
+    public void dragAndDrop(WebElement ele, int endX, int endY){
+        JavascriptExecutor js =  (JavascriptExecutor) driver;
+        js.executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", ((RemoteWebElement) ele).getId(),
+                "endX", endX,
+                "endY", endY
+        ));
+    }
 	
 	
 	public Double getFormattedAmount(String amount)

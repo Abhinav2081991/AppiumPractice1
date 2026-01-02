@@ -22,15 +22,11 @@ public class LongPress extends BaseTest{
 		driver.findElement(AppiumBy.accessibilityId("Views")).click();
 		driver.findElement(By.xpath("//android.widget.TextView[@text='Expandable Lists']")).click();
 		driver.findElement(AppiumBy.accessibilityId("1. Custom Adapter")).click();
-	WebElement ele=	driver.findElement(By.xpath("//android.widget.TextView[@text='People Names']"));
-		longPressAction(ele);
-	String menuText =	driver.findElement(By.id("android:id/title")).getText();
-	Assert.assertEquals(menuText, "Sample menu");
-	Assert.assertTrue(driver.findElement(By.id("android:id/title")).isDisplayed());
-	
-		
-			
+        WebElement ele=	driver.findElement(By.xpath("//android.widget.TextView[@text='People Names']"));
+            longPressAction(ele);
+        String menuText =	driver.findElement(By.id("android:id/title")).getText();
+        Assert.assertEquals(menuText, "Sample menu");
+        Assert.assertTrue(driver.findElement(By.id("android:id/title")).isDisplayed());
+
 	}
-	
-	
 }

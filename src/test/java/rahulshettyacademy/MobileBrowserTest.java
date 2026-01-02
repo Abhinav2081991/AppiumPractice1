@@ -11,9 +11,7 @@ public class MobileBrowserTest extends BrowserBaseTest{
 	
 	@Test
 	public void browserTest()
-	
 	{
-
 //		driver.get("http://google.com");
 //		System.out.println(driver.getTitle());
 //		driver.findElement(By.name("q")).sendKeys("rahul shetty academy");
@@ -24,7 +22,5 @@ public class MobileBrowserTest extends BrowserBaseTest{
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1000)", "");	//Scroll
 		String text = driver.findElement(By.cssSelector("a[href*='products/3']")).getText();
 		Assert.assertEquals(text, "Devops");
-			
-		
 	}
 }

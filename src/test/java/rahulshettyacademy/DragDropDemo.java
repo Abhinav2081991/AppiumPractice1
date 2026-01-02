@@ -28,7 +28,10 @@ public class DragDropDemo extends BaseTest{
 			    "endX", 619,
 			    "endY", 560
 			));
-		
+
+//        Method from BaseTest Class
+//        dragAndDrop(source, 619, 560);
+
 		Thread.sleep(3000);
 		String result = driver.findElement(By.id("io.appium.android.apis:id/drag_result_text")).getText();
 		Assert.assertEquals(result, "Dropped!");

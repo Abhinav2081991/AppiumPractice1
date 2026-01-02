@@ -8,7 +8,6 @@ import io.appium.java_client.AppiumBy;
 
 public class eCommerce_tc_2 extends BaseTest{
 
-	
 	@Test
 	public void FillForm() throws InterruptedException
 	{
@@ -22,13 +21,6 @@ public class eCommerce_tc_2 extends BaseTest{
 		driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
 		String toastMessage = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
 		Assert.assertEquals(toastMessage,"Please enter your name");
-		
-		
-		
-		
-		
 
-		
-		
 	}
 }

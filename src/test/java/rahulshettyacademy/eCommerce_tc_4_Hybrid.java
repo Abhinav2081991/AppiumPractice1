@@ -36,66 +36,58 @@ public class eCommerce_tc_4_Hybrid extends BaseTest{
 		driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();	
 		
 		//Thread.sleep(2000);
-	WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(5));
-wait.until(ExpectedConditions.attributeContains(driver.findElement(By.id("com.androidsample.generalstore:id/toolbar_title")),"text" , "Cart"));
-     List<WebElement> productPrices =driver.findElements(By.id("com.androidsample.generalstore:id/productPrice"));
-	int count = productPrices.size();
-	double totalSum =0;
-	for(int i =0; i< count; i++)
-	{
-		String amountString =productPrices.get(i).getText();
-		Double price = getFormattedAmount(amountString);
-		totalSum = totalSum + price;  //160.97 + 120 =280.97
-			
-	}
-	String displaySum =driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText();
-	Double displayFormattedSum = getFormattedAmount(displaySum);
-	Assert.assertEquals(totalSum, displayFormattedSum);
-	WebElement ele = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
-	longPressAction(ele);
-	driver.findElement(By.id("android:id/button1")).click();
-	driver.findElement(AppiumBy.className("android.widget.CheckBox")).click();
-	driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
-	Thread.sleep(6000);
-	Set<String> contexts =driver.getContextHandles();
-	for(String contextName :contexts)
-	{
-		System.out.println(contextName);
-	}
-	
-	driver.context("WEBVIEW_com.androidsample.generalstore");//chrome driver
-	driver.findElement(By.name("q")).sendKeys("rahul shetty academy");
-	driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
-	driver.pressKey(new KeyEvent(AndroidKey.BACK));
-	driver.context("NATIVE_APP");
-	
-	//
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//Hybrid - Google page->
-	
-	
-	
-	
-	 
+        WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.attributeContains(driver.findElement(By.id("com.androidsample.generalstore:id/toolbar_title")),"text" , "Cart"));
+         List<WebElement> productPrices =driver.findElements(By.id("com.androidsample.generalstore:id/productPrice"));
+        int count = productPrices.size();
+        double totalSum =0;
+        for(int i =0; i< count; i++)
+        {
+            String amountString =productPrices.get(i).getText();
+            Double price = getFormattedAmount(amountString);
+            totalSum = totalSum + price;  //160.97 + 120 =280.97
 
-	
-	
-			
-		
+        }
+        String displaySum =driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText();
+        Double displayFormattedSum = getFormattedAmount(displaySum);
+        Assert.assertEquals(totalSum, displayFormattedSum);
+        WebElement ele = driver.findElement(By.id("com.androidsample.generalstore:id/termsButton"));
+        longPressAction(ele);
+        driver.findElement(By.id("android:id/button1")).click();
+        driver.findElement(AppiumBy.className("android.widget.CheckBox")).click();
+        driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
+        Thread.sleep(6000);
+        /*
+        This code is a classic Hybrid App handling example in Appium (Java).
+        It shows how to switch between Native and WebView contexts, interact with a web page, and then return to the native app.
+
+         */
+
+        Set<String> contexts =driver.getContextHandles(); // Get all available contexts.
+        /*
+        What is a context?
+            A context tells Appium how to interpret elements:
+            NATIVE_APP → Android native views
+            WEBVIEW_* → HTML / web content inside the app
+            This method returns all contexts currently available in the app.
+         */
+        for(String contextName :contexts)
+        {
+            System.out.println(contextName);
+        }
+
+        driver.context("WEBVIEW_com.androidsample.generalstore");//chrome driver  🔹 3. Switch to WebView context
+        driver.findElement(By.name("q")).sendKeys("rahul shetty academy");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
+        driver.context("NATIVE_APP");  //Switch back to Native App  Why is this mandatory?
+            /*
+            After WebView interaction, the app UI is native again
+            Native locators (By.id, By.accessibilityId) won’t work unless:
+            */
+
+	//Hybrid - Google page->
+
 	}
-	
-	
+
 }

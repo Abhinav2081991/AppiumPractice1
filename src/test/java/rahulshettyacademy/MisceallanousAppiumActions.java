@@ -19,21 +19,42 @@ public class MisceallanousAppiumActions extends BaseTest{
 	{
 		//adb shell dumpsys window | grep -E 'mCurrentFocus'  - MAC
 		// adb shell dumpsys window | find "mCurrentFocus"  - Windows
-
 		//App Package & App Activity
-		
+        /*
+        In Android, an Activity represents a single screen of an app (similar to a page in a web app).
+            Appium provides the Activity class (io.appium.java_client.android.Activity) to:
+                Launch a specific screen
+                Without navigating through the UI manually
+                This is extremely useful in automation to:
+                Speed up tests
+                Avoid flaky UI navigation
+
+                First parameter – App Package - This is the package name of the Android application
+                Second parameter – App Activity "io.appium.android.apis.preference.PreferenceDependencies" ,
+                        This is the fully qualified name of the Activity
+                        Represents the exact screen inside the app
+                        Here, it refers to the Preference → Preference Dependencies screen
+		*/
 		Activity activity = new Activity("io.appium.android.apis", "io.appium.android.apis.preference.PreferenceDependencies");
+        /*
+            Starting the activity
+            driver.startActivity(activity);
+            Uses the Appium AndroidDriver
+            Directly launches the specified activity
+            Skips all intermediate screens
+        */
 		driver.startActivity(activity);
+
 		driver.findElement(By.id("android:id/checkbox")).click();
 		DeviceRotation landScape = new DeviceRotation(0, 0, 90);
 		driver.rotate(landScape);		
 		driver.findElement(By.xpath("(//android.widget.RelativeLayout)[2]")).click(); 
 		String alertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
 		Assert.assertEquals(alertTitle, "WiFi settings");	
-		//copy paste
+		//setClipboardText copy paste
 		//copy to clipboard- paste it clipboard
-		
 		driver.setClipboardText("Rahul Wifi");
+        // above method is used to set text into the device’s clipboard so that it can later be pasted inside the app during automation.
 		driver.findElement(By.id("android:id/edit")).sendKeys(driver.getClipboardText());
 		driver.pressKey(new KeyEvent(AndroidKey.ENTER));
 		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();

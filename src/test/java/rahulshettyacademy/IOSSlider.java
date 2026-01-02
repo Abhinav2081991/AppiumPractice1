@@ -23,7 +23,6 @@ public class IOSSlider extends IOSBaseTest{
 	Assert.assertEquals("0%", slider.getAttribute("value"));
 	slider.sendKeys("1%");	
 	Assert.assertEquals("100%", slider.getAttribute("value"));
-	
 		
 	}
 }
