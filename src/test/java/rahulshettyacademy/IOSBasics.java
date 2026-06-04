@@ -35,7 +35,7 @@ public class IOSBasics extends IOSBaseTest{
 
        4. 4️⃣ XPath (Use as Last Resort)  driver.findElement(By.xpath(     "//XCUIElementTypeButton[@name='Login']" ));
        5. 5️⃣ iOS Class Name  driver.findElement(By.className("XCUIElementTypeButton"));
-       6. 6️⃣ Name Locator driver.findElement(By.name("Login"));.  ⚠️ Less reliable than accessibilityId
+//       6. 6️⃣ Name Locator driver.findElement(By.name("Login"));.  ⚠️ Less reliable than accessibilityId
        7. 7️⃣ ID Locator (Rarely Used) driver.findElement(By.id("login_button"));
             a. Internally maps to accessibility properties
             b. Less explicit than accessibilityId
